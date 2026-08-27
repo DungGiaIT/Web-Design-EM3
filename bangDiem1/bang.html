@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điểm</title>
+    <style>
+        #result {
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 10px;
+            width: fit-content;
+        }
+
+        .excellent {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .good {
+            background-color: #fef3c7;
+            color: #b45309;
+        }
+
+        .average {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bang diem cua em</h1>
+    <div id="bangdiem">
+        <table border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <td>Semester 1</td>
+                <td><input id="semester1" type="number" value="" min="0" max="10"></td>
+            </tr>
+            <tr>
+                <td>Semester 2</td>
+                <td><input id="semester2" type="number" value="" min="0" max="10"></td>
+            </tr>
+            <tr>
+                <td>year</td>
+                <td><input id="year" type="number" value="" min="1" max="2"></td>
+            </tr>
+            <tr>
+                <td>Summaries:</td>
+                <td><input id="summary" type="number" value="" min="0" max="10" readonly></td>
+            </tr>
+        </table>
+        <button type="button" onclick="myFunction1()">OK</button>
+        <button type="button" onclick="myFunction2()">Cancel</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function myFunction1() {
+            const semester1 = document.getElementById("semester1").value;
+            const semester2 = document.getElementById("semester2").value;
+            const year = document.getElementById("year").value;
+            const summary = document.getElementById("summary");
+
+            if (
+                document.getElementById("semester1").value === "" ||
+                document.getElementById("semester2").value === "" ||
+                document.getElementById("year").value === ""
+            ) {
+                alert("Vui lòng nhập đầy đủ điểm và year");
+                return;
+            }
+
+            let summaryScore;
+
+            if (year === 1) {
+                summaryScore = (semester1 + semester2) / 2;
+            } else if (year === 2) {
+                summaryScore = (semester1 + semester2 * 2) / 3;
+            } else {
+                alert("Year chỉ được nhập 1 hoặc 2");
+                return;
+            }
+
+            summary.value = summaryScore.toFixed(2);
+
+            const result = document.getElementById("result");
+            result.className = "";
+
+            if (summaryScore >= 9) {
+                result.textContent = "Học sinh giỏi";
+                result.classList.add("excellent");
+            } else if (summaryScore >= 7) {
+                result.textContent = "Học sinh khá";
+                result.classList.add("good");
+            } else {
+                result.textContent = "Học sinh trung bình";
+                result.classList.add("average");
+            }
+        }
+
+        function myFunction2() {
+            document.getElementById("semester1").value = "";
+            document.getElementById("semester2").value = "";
+            document.getElementById("year").value = "";
+            document.getElementById("summary").value = "";
+
+            const result = document.getElementById("result");
+            result.textContent = "";
+            result.className = "";
+        }
+    </script>
+</body>
+</html>

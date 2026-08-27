@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Manager</title>
+    <link rel="stylesheet" href="./style/style.css"></link>
+    <script src="./scripts/script.js"></script>
+</head>
+
+<body>
+    <main class="page">
+        <form class="form-area" id="productForm">
+            <label for="fullname">Fullname_Customer</label>
+            <input id="fullname" name="fullname" type="text" required>
+
+            <label for="idPro">Id_Pro</label>
+            <input id="idPro" name="idPro" type="number" required>
+
+            <label for="namePro">Name_Pro</label>
+            <input id="namePro" name="namePro" type="text" required>
+
+            <label for="quantityPro">Quantity_Pro</label>
+            <input id="quantityPro" name="quantityPro" type="number" min="0" required>
+
+            <label for="pricePro">Price_Pro</label>
+            <input id="pricePro" name="pricePro" type="number" min="0" step="0.01" required>
+
+            <div class="actions">
+                <button type="submit">Save</button>
+                <button type="button" id="showButton">Show</button>
+                <button type="reset" id="resetButton">Reset</button>
+            </div>
+        </form>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Auto_Increment</th>
+                        <th>Fullname_Customer</th>
+                        <th>Id_Pro</th>
+                        <th>Name_Pro</th>
+                        <th>Quantity_Pro</th>
+                        <th>Price_Pro</th>
+                        <th>Discount</th>
+                        <th>Amount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="productRows"></tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
