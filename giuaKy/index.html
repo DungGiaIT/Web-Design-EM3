@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>App Xem Phim Online</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">VNUK</div>
+
+    <nav>
+        <a href="#">Trang Chủ</a>
+        <a href="#">Thể Loại</a>
+        <a href="#">Phim Mới</a>
+        <a href="#">Phim Hot</a>
+        <a href="#">Tài Khoản</a>
+    </nav>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm phim...">
+    </div>
+
+    <button id="btn-open-add-modal" class="btn btn-primary">+ Thêm sản phẩm mới</button>
+</header>
+
+<main>
+
+    <h1>App Xem Phim Online</h1>
+
+    <div class="movie-grid" id="movieList">
+    </div>
+
+</main>
+
+<!-- Modal Thêm / Sửa Phim Mới -->
+<div id="addMovieModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalFormTitle">Thêm Phim Mới</h2>
+            <span class="close-btn" id="closeAddModal">&times;</span>
+        </div>
+        <form id="addMovieForm">
+            <input type="hidden" id="editMovieId" value="">
+            <div class="form-group">
+                <label for="tenPhim">Tên Phim:</label>
+                <input type="text" id="tenPhim" required placeholder="Nhập tên phim">
+            </div>
+            <div class="form-group">
+                <label for="moTa">Mô Tả:</label>
+                <textarea id="moTa" rows="3" required placeholder="Nhập mô tả phim"></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="thoiLuong">Thời Lượng (phút):</label>
+                    <input type="number" id="thoiLuong" required placeholder="120" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="namPhatHanh">Năm Phát Hành:</label>
+                    <input type="number" id="namPhatHanh" required placeholder="2024" min="1900">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gia">Giá (VNĐ):</label>
+                <input type="number" id="gia" required placeholder="100000" min="0">
+            </div>
+            <div class="form-group">
+                <label for="anh">Link Hình Ảnh (URL):</label>
+                <input type="url" id="anh" placeholder="https://example.com/poster.jpg">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnCancelAdd">Hủy</button>
+                <button type="submit" class="btn btn-primary" id="btnSubmitForm">Lưu Sản Phẩm</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Chi Tiết Phim -->
+<div id="detailMovieModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="detailTenPhim">Chi Tiết Phim</h2>
+            <span class="close-btn" id="closeDetailModal">&times;</span>
+        </div>
+        <div class="modal-body" id="detailMovieBody">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-warning" id="btnEditMovie">Sửa</button>
+            <button type="button" class="btn btn-danger" id="btnDeleteMovie">Xóa</button>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>
