@@ -1,0 +1,22 @@
+{
+  "name": "mongo-product-crud",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.8",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.22.3",
+    "method-override": "^3.0.0",
+    "mongoose": "^9.10.3",
+    "mysql2": "^3.24.5"
+  },
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
