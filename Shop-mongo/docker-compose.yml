@@ -1,0 +1,62 @@
+services:
+  api:
+    image: shop-mongo-api:local
+    build: ./api
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      MONGODB_URI: mongodb://127.0.0.1:27017/digitaldb
+    volumes:
+      - uploads_data:/app/uploads
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3001/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  seed:
+    image: shop-mongo-api:local
+    build: ./api
+    restart: "no"
+    network_mode: host
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://127.0.0.1:27017/digitaldb
+    volumes:
+      - uploads_data:/app/uploads
+    command: npm run seed
+
+  web:
+    image: shop-mongo-web:local
+    build: ./web
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      API_INTERNAL_URL: http://host.docker.internal:3001
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+volumes:
+  uploads_data:
