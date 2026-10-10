@@ -1,8 +1,22 @@
-<div class="product">
-  <h3><%= product.name %></h3>
-  <p>$<%= product.price %></p>
-  <% if (product.tag) { %>
-    <span class="tag"><%= product.tag %></span>
+<% const hasSale = product.promotionPrice !== null && product.promotionPrice !== undefined && product.promotionPrice < product.unitPrice; %>
+<article class="product-card">
+  <% if (hasSale) { %>
+    <span class="sale-ribbon">SALE</span>
   <% } %>
-  <button>Buy now</button>
-</div>
+  <a class="product-image" href="/product/<%= product.legacyId %>">
+    <img src="/images/products/<%= encodeURIComponent(product.image) %>" alt="<%= product.name %>" loading="lazy">
+  </a>
+  <div class="product-body">
+    <a class="product-name" href="/product/<%= product.legacyId %>"><%= product.name %></a>
+    <div class="price-row">
+      <% if (hasSale) { %>
+        <span class="old-price"><%= formatPrice(product.unitPrice) %> ₫</span>
+      <% } %>
+      <span class="price"><%= formatPrice(hasSale ? product.promotionPrice : product.unitPrice) %> ₫</span>
+    </div>
+  </div>
+  <div class="product-actions">
+    <a class="cart-button" href="/product/<%= product.legacyId %>" aria-label="Xem <%= product.name %>">🛒</a>
+    <a class="details-button" href="/product/<%= product.legacyId %>">Details <span>›</span></a>
+  </div>
+</article>

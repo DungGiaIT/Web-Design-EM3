@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - Hỷ Lâm Môn</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <main class="container page-content">
+      <div class="page-heading">
+        <p class="eyebrow">CONTACT</p>
+        <h1>Liên hệ</h1>
+        <p>Gửi yêu cầu, chúng tôi sẽ phản hồi sớm nhất.</p>
+      </div>
+      <section class="contact-grid">
+        <form class="contact-form" action="/contact" method="post">
+          <% if (typeof submitted !== 'undefined' && submitted) { %>
+            <p class="form-success">Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi sớm.</p>
+          <% } %>
+          <label>Họ và tên<input name="name" type="text" required></label>
+          <label>Email<input name="email" type="email" required></label>
+          <label>Nội dung<textarea name="message" rows="6" required></textarea></label>
+          <button class="primary-button" type="submit">Gửi liên hệ</button>
+        </form>
+        <div class="contact-info">
+          <h2>Thông tin cửa hàng</h2>
+          <p><strong>Địa chỉ:</strong> 90-92 Lê Thị Riêng, Bến Thành, Quận 1</p>
+          <p><strong>Điện thoại:</strong> 0163 296 7751</p>
+          <p><strong>Email:</strong> hello@hylammon.vn</p>
+        </div>
+      </section>
+    </main>
+    <%- include('partials/footer') %>
+  </body>
+</html>
+

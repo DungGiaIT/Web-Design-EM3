@@ -1,6 +1,15 @@
-<section>
-  <h2>New Products</h2>
-  <% products.forEach(product => { %>
-    <%- include('product-card', { product }) %>
-  <% }) %>
+<section class="product-section">
+  <div class="section-heading">
+    <div>
+      <h1>New Products</h1>
+      <p><%= products.length %> styles found</p>
+    </div>
+    <a class="view-all" href="/product?section=new">Xem tất cả <span>→</span></a>
+  </div>
+
+  <div class="product-grid">
+    <% products.forEach(product => { %>
+      <%- include('product-card', { product }) %>
+    <% }) %>
+  </div>
 </section>

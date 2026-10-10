@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm - Hỷ Lâm Môn</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <main class="container page-content">
+      <div class="page-heading">
+        <p class="eyebrow">MENU BÁNH</p>
+        <h1>Sản phẩm</h1>
+        <p><%= products.length %> sản phẩm được tìm thấy</p>
+      </div>
+
+      <form class="filter-bar" action="/product" method="get">
+        <input type="search" name="q" value="<%= query.q || '' %>" placeholder="Tìm theo tên bánh...">
+        <select name="section" aria-label="Lọc sản phẩm">
+          <option value="">Tất cả sản phẩm</option>
+          <option value="new" <%= query.section === 'new' ? 'selected' : '' %>>Sản phẩm mới</option>
+          <option value="top" <%= query.section === 'top' ? 'selected' : '' %>>Sản phẩm nổi bật</option>
+          <option value="catalog" <%= query.section === 'catalog' ? 'selected' : '' %>>Danh mục khác</option>
+        </select>
+        <button type="submit">Lọc</button>
+      </form>
+
+      <% if (products.length) { %>
+        <div class="product-grid product-grid-large">
+          <% products.forEach(product => { %>
+            <%- include('partials/product-card', { product }) %>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <div class="empty-state">Không tìm thấy sản phẩm phù hợp.</div>
+      <% } %>
+    </main>
+    <%- include('partials/footer') %>
+  </body>
+</html>
+

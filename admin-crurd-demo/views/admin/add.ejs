@@ -1,0 +1,12 @@
+<%- include('../layout') %>
+
+<div class="card p-3 shadow-sm">
+  <h3 class="mb-3 text-center">🆕 Thêm sản phẩm</h3>
+  <form action="/admin/add" method="POST" enctype="multipart/form-data" class="row g-2">
+    <div class="col-md-6"><input type="text" name="name" placeholder="Tên" class="form-control" required></div>
+    <div class="col-md-3"><input type="number" name="price" placeholder="Giá" class="form-control" required></div>
+    <div class="col-md-3"><input type="file" name="image" class="form-control"></div>
+    <div class="col-12 mt-2"><textarea name="description" class="form-control" placeholder="Mô tả"></textarea></div>
+    <div class="col-12 mt-2"><button class="btn btn-primary">Lưu</button> <a href="/admin" class="btn btn-secondary">Quay lại</a></div>
+  </form>
+</div>

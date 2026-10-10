@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="vi">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Shop - MongoDB</title>
+    <title>Hỷ Lâm Môn - Bánh ngọt</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
     <%- include('partials/header') %>
-    <%- include('partials/banner') %>
 
-    <%- include('partials/new-products', { products: newProducts }) %>
-    <%- include('partials/top-products', { products: topProducts }) %>
+    <main class="home-content container">
+      <%- include('partials/new-products', { products: newProducts }) %>
+      <%- include('partials/top-products', { products: topProducts }) %>
+    </main>
 
     <%- include('partials/footer') %>
   </body>
